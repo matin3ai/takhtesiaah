@@ -1,0 +1,48 @@
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 999;
+    left: 0; top: 0;
+    width: 100%; height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+  
+
+  .modal-content {
+    background-color: #fafafa;
+    margin: 20% auto;
+    padding: 20px;
+    border-radius: 16px;
+    width: 90%;
+    min-width: 230px;
+    max-width: 400px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    direction: rtl;
+  }
+
+  .close-btn {
+    background: none;
+    border: none;
+    font-size: 24px;
+    float: left;
+    cursor: pointer;
+  }
+  
+  
+  .call-btn {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: #00c853;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+  }
+  
+  .call-btn:hover {
+    background-color: #00a843;
+  }

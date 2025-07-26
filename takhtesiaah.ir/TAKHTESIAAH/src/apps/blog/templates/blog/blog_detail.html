@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    {% csrf_token %} {% load static %}
+     {% include 'blog/components/head.html' %}
+     <link rel="stylesheet" href="{% static 'blog/css/styles.css' %}" />
+  </head>
+<body>
+
+
+<div class="container blog-detail">
+    {% include 'blog/components/header.html' %}
+    <div class="detail-content">
+
+        <!-- ویدیوها -->
+        {% for video in post.videos.all %}
+            {% if video.video_file %}
+                <video controls class="video-player">
+                    <source src="{{ video.video_file.url }}" type="video/mp4">
+                    مرورگر شما از پخش ویدیو پشتیبانی نمی‌کند.
+                </video>
+            {% elif video.video_url %}
+                <div class="video-embed">
+                    <iframe src="{{ video.video_url }}" allowfullscreen></iframe>
+                </div>
+            {% endif %}
+        {% endfor %}
+        <p class="post-content">{{ post.content|linebreaks }}</p>
+    </div>
+<a href="{% url 'blog:blog_list' %}" class="btn-back-home">بازگشت</a>
+    <!-- تماس -->
+    <div id="contact-modal" class="modal">
+        <div class="modal-content">
+            <button class="close-btn" aria-label="بستن">×</button>
+            <h3>تماس با ما</h3>
+            <p><strong>📞 شماره تماس:</strong></p>
+            <p><a href="tel:09132039701" class="call-btn">۰۹۱۳۲۰۳۹۷۰۱</a></p>
+            <a href="mailto:info@takhtesiaah.ir">info@takhtesiaah.ir</a>
+        </div>
+    </div>
+
+    {% include 'blog/components/footer.html' %}
+    {% csrf_token %}
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "headline": "{{ post.title }}",
+        "datePublished": "{{ post.created_at|date:'c' }}",
+        "articleBody": "{{ post.content|truncatewords:100 }}",
+        "publisher": {
+            "@type": "Organization",
+            "name": "تخته سیاه"
+        }
+    }
+    </script>
+    <script src="{% static 'blog/js/scripts.js' %}" defer></script>
+    <link rel="stylesheet" href="{% static 'blog/css/contact.css' %}">
+    <script src="{% static 'blog/js/contact.js' %}" defer></script>
+</div>
+</body>
+</html>

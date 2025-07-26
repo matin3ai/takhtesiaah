@@ -1,0 +1,559 @@
+/* ============================
+   💠 تنظیمات پایه برای body 
+   ============================ */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.list-menu {
+  padding-top: 8px;
+
+}
+
+body {
+  font-family: "Vazirmatn", sans-serif;
+  flex-direction: column;
+  justify-self: center;
+  min-height: 100vh;
+  overflow: visible;
+  height: 100%;
+  margin: 0;
+  scrollbar-width: none;
+  position: relative;
+  direction: rtl;
+  align-items: center;
+  text-align: center;
+  background-color: #F0F2F5;
+}
+
+/* ============================
+     💠 حذف Scrollbar در مرورگر کروم
+     ============================ */
+::-webkit-scrollbar {
+  display: none;
+}
+
+/* ============================
+   💠 کانتینر کلی صفحه 
+   ============================ */
+.container {
+  width: 100vw;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0;
+}
+
+/* ============================
+   💠 هدر بالا (Header)
+   ============================ */
+header {
+  background-color: #3b5998;
+  padding: 0px;
+  display: flex;
+  width: 100%;
+  margin: 0;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 800;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.header-container {
+  display: flex;
+  padding: 8px;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+}
+
+.header-container h1 {
+  align-items: center;
+  justify-content: center;
+}
+
+h1 {
+  color: white;
+  font-size: 1.4rem;
+  margin: 0;
+  text-shadow: 0 0 10px black;
+}
+
+/* لینک‌های عمومی */
+a {
+  text-decoration: none;
+  color: white;
+}
+
+/* ============================
+   💠 منوی همبرگری و ناوبری
+   ============================ */
+.hamburger-menu {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 35px;
+  height: 35px;
+  margin: 8px;
+  background: none;
+  border: none;
+  z-index: 1000;
+}
+
+.hamburger-menu span {
+  display: block;
+  width: 100%;
+  margin: 2px;
+  height: 4px;
+  background-color: white;
+  border-radius: 5px;
+  transition: all 0.3s ease-in-out;
+}
+
+/* ============================
+     💠 منوی ناوبری پاپ‌آپ
+     ============================ */
+.nav-menu {
+  display: none;
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  padding: 0;
+  z-index: 900;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  opacity: 0;
+  transform: translateY(-100%);
+}
+
+.nav-menu.active {
+  display: flex;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.nav-menu ul {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: 20px;
+}
+
+.nav-menu ul li a {
+  text-decoration: none;
+  color: white;
+  font-size: 1.5rem;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+.nav-menu ul li a:hover {
+  color: #77b6e4;
+}
+
+/* ============================
+     💠 فوتر پایین صفحه
+     ============================ */
+footer {
+  background-color: #76c625;
+  color: #000;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  position: relative;
+  bottom: 0px;
+  width: 100%;
+}
+
+/* ============================
+     💠 انیمیشن آیکون همبرگر هنگام فعال‌سازی
+     ============================ */
+.hamburger-menu span.rotate-top {
+  transform: rotate(50deg) translateY(13px);
+  background-color: #76c625;
+}
+
+.hamburger-menu span.hide-middle {
+  opacity: 0;
+}
+
+.hamburger-menu span.rotate-bottom {
+  transform: rotate(-50deg) translateY(-13px);
+  background-color: #76c625;
+}
+
+/* ============================
+     💠Book Cards Grid Layout
+     ============================ */
+/* Layout Container */
+.row-books {
+  display: grid;
+  align-items: center;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 16px;
+  padding: 16px;
+  max-width: 1200px;
+  /* عرض بیشتر برای لیست بلاگ */
+  margin: 0 auto;
+  min-height: calc(100vh - 64px - 40px);
+  /* کسر ارتفاع هدر و فوتر */
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.book-card-blog {
+  position: relative;
+  border-radius: 24px;
+  overflow: hidden;
+  transition: all 0.4s ease;
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: box-shadow 0.3s ease-in-out;
+  width: 100%;
+  max-width: 800px;
+}
+
+
+/* Gradient Animation */
+.book-card-blog::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(45deg, rgba(67, 97, 238, 0.08), rgba(115, 103, 240, 0.08), rgba(234, 84, 85, 0.08));
+  z-index: -1;
+  opacity: 0.6;
+}
+
+/* ============================
+   💠 Book Card و تصویر کتاب
+   ============================ */
+.my-books {
+  font-size: 16px;
+  color: #1d1e23e6;
+  padding: 16px;
+  text-align: center;
+}
+
+.card-img-top {
+  width: 100%;
+  min-height: 300px;
+  height: 320px;
+  object-fit: cover;
+  border-radius: 24px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: box-shadow 0.3s ease-in-out;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.card-img-top-blog {
+  width: 100%;
+  min-height: 300px;
+  height: 320px;
+  object-fit: cover;
+  border-radius: 24px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: box-shadow 0.3s ease-in-out;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.card-h-blog {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.book-card::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(45deg, rgba(67, 97, 238, 0.08), rgba(115, 103, 240, 0.08), rgba(234, 84, 85, 0.08));
+  z-index: -1;
+  opacity: 0.6;
+
+}
+
+.detail-content p {
+  text-align: justify;
+  text-align-last: right;
+  text-justify: inter-word;
+  -webkit-text-justify: inter-word;
+  -moz-text-justify: inter-word;
+  margin: 16px;
+  padding-left: 16px;
+  padding-right: 16px;
+  align-self: start;
+  text-align: right;
+  font-size: 1rem;
+  direction: rtl;
+  color: #2b2d42;
+}
+
+.video-player {
+  width: 80%;
+  padding: 16px;
+  margin: 16px;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.card-img-top:hover {
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3), 0 3px 6px rgba(0, 0, 0, 0.15);
+  transform: translateY(-3px);
+}
+
+.card-text-blog {
+  font-size: 14px;
+  color: #2b2d42;
+  line-height: 1.6;
+  margin-bottom: 1.2rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.card-body {
+  padding: 12px;
+  padding: 8px;
+  padding-bottom: 16px;
+  position: relative;
+  z-index: 2;
+}
+
+.btn-primary {
+  background-color: #4361ee;
+  color: #fff;
+  padding: 10px 20px;
+  margin: 16px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.card-title {
+  font-size: 24px;
+  color: #2b2d42;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.card-subtitle {
+  font-size: 0.95rem;
+  color: #4361ee;
+  font-weight: 600;
+  margin-bottom: 0.8rem;
+}
+
+.fw-bold {
+  color: #4361ee;
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+.text-price {
+  font-size: small;
+}
+
+.describe-book-des {
+  font-size: medium;
+  text-align: justify;
+  padding-top: 16px;
+}
+
+/* ============================
+   💠 دکمه بازگشت
+   ============================ */
+.btn-back-home {
+  margin: 16px 0;
+  padding: 8px 16px;
+  background-color: #4361ee;
+  color: #fff;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  transition: background-color 0.3s ease;
+}
+
+.btn-back-home:hover {
+  background-color: #2b2d42;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ============================
+     💠 Media Query برای دسکتاپ (حداقل عرض 769px)
+     ============================ */
+@media (min-width: 1060px) {
+  .list-menu {
+    display: none;
+  }
+
+  .hamburger-menu {
+    display: none;
+  }
+
+  .nav-menu {
+    display: flex;
+    position: static;
+    background-color: transparent;
+    flex-direction: row;
+    justify-content: flex-end;
+    gap: 20px;
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .nav-menu ul {
+    flex-direction: row;
+  }
+
+  .nav-menu ul li a {
+    color: #ecf3f0;
+    font-size: 1rem;
+    padding-left: 16px;
+  }
+
+  .nav-menu ul li a:hover {
+    color: #005f99;
+  }
+
+  header,
+  .header-container {
+    padding: 8px 12px !important;
+    margin: 0 !important;
+    width: 100% !important;
+  }
+
+  .row {
+    min-height: calc(100vh - 64px - 40px);
+    /* تنظیم ارتفاع برای دسکتاپ */
+  }
+}
+
+
+@media (max-width: 1060px) {
+  .describe-book-des {
+    font-size: 12px;
+  }
+
+  .card-title {
+    font-size: 18px;
+  }
+
+  .card-text {
+    font-size: 12px;
+  }
+
+  .card-subtitle {
+    font-size: 14px;
+  }
+
+  .card-body {
+    margin: 8px;
+    padding: 4px;
+    padding-bottom: 12px;
+  }
+
+  .row-books {
+    grid-template-columns: 1fr;
+    max-width: 100%;
+    padding: 16px;
+  }
+
+  .card-img-top {
+    width: auto;
+    height: 180px;
+    margin-top: 0px;
+    width: 100%;
+    height: 320px;
+    object-fit: cover;
+    border-radius: 24px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: box-shadow 0.3s ease-in-out;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+
+  }
+
+  .btn-primary {
+    padding: 9px 16px;
+  }
+
+  .book-card {
+    backdrop-filter: blur(6px);
+    background: rgba(255, 255, 255, 0.2);
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+  }
+
+  .book-card::before {
+    animation-duration: 20s;
+  }
+}

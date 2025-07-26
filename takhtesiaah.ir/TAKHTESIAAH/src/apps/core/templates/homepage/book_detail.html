@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  {% load static %}
+  {% include 'homepage/components/head.html' %}
+</head>
+<body>
+  <div class="container">
+    {% include 'homepage/components/header.html' %}
+
+    <div class="row-books">
+      <div class="book-card" style="max-width: 800px; width: 100%;">
+        <div class="row-books" >
+          <div class="col-md-4">
+            <img src="{{ book.cover_image.url }}" class="card-img-top" alt="{{ book.title }}">
+          </div>
+          <div class="col-md-8" >
+            <div class="card-body">
+              <h2 class="card-title">{{ book.title }}</h2>
+              <h5 class="card-subtitle"><strong>نویسنده:</strong> {{ book.author }}</h5>
+              <p class="fw-bold text-price"><strong>قیمت:</strong> {{ book.price }} هزار تومان</p>
+              <p class="describe-book-des">{{ book.full_description|default:book.description }}</p>
+            </div>
+          </div>
+           <a href="/" class="btn-back-home">بازگشت به صفحه اصلی</a>
+        </div>
+       
+      </div>
+    </div>
+  </div>
+
+  <!--contact-->
+  <div id="contact-modal" class="modal">
+    <div class="modal-content">
+      <button class="close-btn" aria-label="بستن">×</button>
+      <h3>تماس با ما</h3>
+      <p><strong>📞 شماره تماس:</strong></p>
+      <p>
+        <a href="tel:09132039701" class="call-btn">۰۹۱۳۲۰۳۹۷۰۱</a>
+      </p>
+      <a href="mailto:info@takhtesiaah.ir">info@takhtesiaah.ir</a>
+    </div>
+  </div>
+
+  {% include 'homepage/components/footer.html' %}
+  {% csrf_token %}
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Book",
+    "name": "{{ book.title }}",
+    "author": "{{ book.author }}",
+    "description": "{{ book.full_description|default:book.description }}",
+    "image": "{{ book.cover_image.url }}",
+    "publisher": {
+      "@type": "Organization",
+      "name": "تخته سیاه"
+    }
+  }
+  </script>
+  <script src="{% static 'homepage/js/scripts.js' %}" defer></script>
+  <link rel="stylesheet" href="{% static 'homepage/css/contact.css' %}" />
+  <script src="{% static 'homepage/js/contact.js' %}" defer></script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+version: '3.9'
+
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: takhtesiaah_web
+    env_file:
+      - .env
+    environment:
+      - DJANGO_SETTINGS_MODULE=config.settings.production
+    volumes:
+      - ./src/media:/app/media
+      - ./src/staticfiles:/app/staticfiles
+      - ./src/database:/app/database
+    expose:
+      - "8000"
+    networks:
+      - backend
+    security_opt:
+      - no-new-privileges:true
+    deploy:
+      resources:
+        limits:
+          cpus: '1.0'
+          memory: 1024M
+
+  nginx:
+    image: nginx:1.25-alpine
+    container_name: takhtesiaah_nginx
+    restart: always
+    ports:
+      - "80:80"
+      - "443:443"
+    depends_on:
+      - web
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./nginx/ssl:/etc/nginx/ssl:ro
+      - ./src/staticfiles:/app/staticfiles:ro
+      - ./src/media:/app/media:ro
+    networks:
+      - backend
+
+networks:
+  backend:
+    driver: bridge

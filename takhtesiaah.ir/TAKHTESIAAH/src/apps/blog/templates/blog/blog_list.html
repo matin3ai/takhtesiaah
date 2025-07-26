@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    {% csrf_token %} {% load static %}
+     {% include 'blog/components/head.html' %}
+     <link rel="stylesheet" href="{% static 'blog/css/styles.css' %}" />
+  </head>
+<body>
+<div class="container">
+  {% include 'blog/components/header.html' %}
+<!--<h1 class="my-books">📚 محتوای تصویری</h1>-->
+    <div class="row-books">
+        {% for post in posts %}
+        <div class="book-card-blog">
+            <div class="card-h-blog">
+                {% with post.images.first as post_image %}
+                    {% if post_image %}
+                        <img src="{{ post_image.image.url }}" class="card-img-top" alt="{{ post.title }}">
+                    {% else %}
+                        <img src="{% static 'blog/images/placeholder.jpg' %}" class="card-img-top-blog" alt="No image">
+                    {% endif %}
+                {% endwith %}
+                <div class="card-body">
+                    <h5 class="card-title">{{ post.title }}</h5>
+                    <p class="card-text-blog">{{ post.content|truncatewords:30 }}</p>
+                    <a href="{% url 'blog:blog_detail' post.slug %}" class="btn-primary">مشاهده</a>
+                </div>
+
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+
+
+
+    <!--contact-->
+    <div id="contact-modal" class="modal">
+      <div class="modal-content">
+        <button class="close-btn" aria-label="بستن">×</button>
+        <h3>تماس با ما</h3>
+        <p><strong>📞 شماره تماس:</strong></p>
+        <p>
+          <a href="tel:09132039701" class="call-btn">۰۹۱۳۲۰۳۹۷۰۱</a>
+        </p>
+          <a href="mailto:info@takhtesiaah.ir">info@takhtesiaah.ir</a>
+      </div>
+  </div>
+
+{% include 'blog/components/footer.html' %} {% csrf_token %}
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "name": "مجموعه کتاب تخته سیاه",
+    "author": "سعیده حبیب الهیان",
+    "description": "مجموعه کتاب‌های آموزشی کلاس اول دبستان",
+    "publisher": {
+      "@type": "Organization",
+      "name": "تخته سیاه"
+    }
+  }
+</script>
+<script src="{% static 'blog/js/scripts.js' %}" defer></script>
+<link rel="stylesheet" href="{% static 'blog/css/contact.css' %}">
+<script src="{% static 'blog/js/contact.js' %}" defer></script>
+</body>
+</html>

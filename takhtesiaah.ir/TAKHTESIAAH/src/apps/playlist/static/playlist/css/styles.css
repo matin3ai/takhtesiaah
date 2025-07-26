@@ -1,0 +1,383 @@
+/* ============================
+   💠 تنظیمات پایه برای body 
+   ============================ */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.list-menu {
+    padding-top: 8px;
+
+  }
+body {
+  font-family: "Vazirmatn", sans-serif;
+  flex-direction: column;
+  /* جهت‌گیری اجزا از بالا به پایین */
+  justify-self: center;
+  min-height: 100vh;
+  overflow: visible;
+  height: 100%;
+  margin: 0;
+  scrollbar-width: none;
+  /* مخفی‌کردن scrollbar در فایرفاکس */
+  position: relative;
+  direction: rtl;
+  /* جهت راست به چپ */
+  align-items: center;
+  text-align: center;
+  background-color: #ffffff;
+}
+
+/* ============================
+     💠 کانتینر کلی صفحه 
+     ============================ */
+.container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 0;
+  align-self: center;
+}
+
+/* ============================
+     💠 هدر بالا (Header)
+     ============================ */
+header {
+  background-color: #3b5998;
+  padding: 0px;
+  width: 100%;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 800;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.header-container {
+  display: flex;
+  padding: 8px;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+}
+
+.header-container h1 {
+  align-items: center;
+  justify-content: center;
+}
+
+h1 {
+  color: white;
+  font-size: 1.4rem;
+  margin: 0;
+  text-shadow: 0 0 10px black;
+}
+
+/* لینک‌های عمومی */
+a {
+  text-decoration: none;
+  color: white;
+}
+
+/* ============================
+     💠 منوی همبرگری (مخصوص موبایل)
+     ============================ */
+.hamburger-menu {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 35px;
+  height: 35px;
+  margin: 8px;
+  background: none;
+  border: none;
+  z-index: 1000;
+}
+
+.hamburger-menu span {
+  display: block;
+  width: 100%;
+  margin: 2px;
+  height: 4px;
+  background-color: white;
+  border-radius: 5px;
+  transition: all 0.3s ease-in-out;
+}
+
+/* ============================
+     💠 منوی ناوبری پاپ‌آپ
+     ============================ */
+.nav-menu {
+  display: none;
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  padding: 0;
+  z-index: 900;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  opacity: 0;
+  transform: translateY(-100%);
+}
+
+/* فعال‌سازی منوی پاپ‌آپ */
+.nav-menu.active {
+  display: flex;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.nav-menu ul {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: 20px;
+}
+
+.nav-menu ul li a {
+  text-decoration: none;
+  color: white;
+  font-size: 1.5rem;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+.nav-menu ul li a:hover {
+  color: #77b6e4;
+}
+
+/* ============================
+     💠 فوتر پایین صفحه
+     ============================ */
+footer {
+  background-color: #76c625;
+  color: #000;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  position: relative;
+  bottom: 0px;
+  width: 100%;
+}
+
+/* ============================
+     💠 انیمیشن آیکون همبرگر هنگام فعال‌سازی
+     ============================ */
+.hamburger-menu span.rotate-top {
+  transform: rotate(50deg) translateY(13px);
+  background-color: #76c625;
+}
+
+.hamburger-menu span.hide-middle {
+  opacity: 0;
+}
+
+.hamburger-menu span.rotate-bottom {
+  transform: rotate(-50deg) translateY(-13px);
+  background-color: #76c625;
+}
+
+/* ============================
+     💠 پاراگراف عمومی
+     ============================ */
+p {
+  font-weight: 700;
+  font-size: 34px;
+  margin: 0px;
+  padding: 0%;
+}
+
+/* ============================
+     💠 تنظیمات لوتی‌پلیر (.lottie)
+     ============================ */
+dotlottie-player {
+  width: 100%;
+  max-width: 300px;
+  height: auto;
+  max-height: 300px;
+  aspect-ratio: 1;
+  margin: 0 auto;
+  display: block;
+  padding: 0;
+  background-color: transparent;
+  overflow: hidden;
+}
+
+/* ============================
+     💠 دکمه‌های کنترل صدا / موزیک
+     ============================ */
+.audio-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.audio-controls button {
+  font-family: "Vazirmatn", sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background-color: #dfe3ee;
+  color: rgb(0, 0, 0);
+  width: 150px;
+  height: 60px;
+  margin: 0 8px 8px;
+  padding: 8px;
+  border: 2px solid black;
+  border-radius: 5px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.audio-controls button:hover {
+  background-color: #3ca342;
+}
+
+button span {
+  font-size: 20px;
+}
+
+/* ============================
+     💠 نوار پیشرفت پخش صوت
+     ============================ */
+.progress-bar {
+  position: relative;
+  height: 32px;
+  width: 220px;
+  background-color: #ddd;
+  border-radius: 12px;
+  margin: 0px;
+  margin-bottom: 8px;
+  overflow: auto;
+  box-shadow: 0 0 10px rgba(179, 255, 0, 0.3);
+}
+
+.time-display {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  color: #333;
+  margin: 0 16px 8px;
+}
+
+/* ============================
+     💠 استایل برای input range (پیشرفت صدا)
+     ============================ */
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 32px;
+  background: transparent;
+  cursor: pointer;
+}
+
+input[type="range"]::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 32px;
+  background: linear-gradient(to right, #4caf50 0%, #ddd 100%);
+  border-radius: 12px;
+  box-shadow: inset 0 1px 8px rgba(137, 139, 137, 0.3);
+}
+
+input[type="range"]::-moz-range-track {
+  width: 100%;
+  height: 32px;
+  background: linear-gradient(to right, #4caf50 0%, #ddd 100%);
+  border-radius: 12px;
+  box-shadow: inset 0 1px 8px rgba(137, 139, 137, 0.3);
+}
+
+input[type="range"]::-webkit-slider-thumb,
+input[type="range"]::-moz-range-thumb {
+  width: 32px;
+  height: 32px;
+  background: #3b5998;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  box-shadow: 0 0 8px rgba(0, 255, 21, 0.3);
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+input[type="range"]::-webkit-slider-thumb:hover,
+input[type="range"]::-moz-range-thumb:hover {
+  transform: scale(1.3);
+}
+
+/* ============================
+     💠 حذف Scrollbar در مرورگر کروم
+     ============================ */
+::-webkit-scrollbar {
+  display: none;
+}
+
+/* ============================
+     💠 Media Query برای دسکتاپ (حداقل عرض 769px)
+     ============================ */
+@media (min-width: 1060px) {
+  .list-menu {
+    display: none;
+    
+  }
+
+  .hamburger-menu {
+    display: none;
+  }
+
+  .nav-menu {
+    display: flex;
+    position: static;
+    background-color: transparent;
+    flex-direction: row;
+    justify-content: flex-end;
+    gap: 20px;
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .nav-menu ul {
+    flex-direction: row;
+  }
+
+  .nav-menu ul li a {
+    color: #ecf3f0;
+    font-size: 1rem;
+    padding-left: 16px;
+  }
+
+  .nav-menu ul li a:hover {
+    color: #005f99;
+  }
+
+  dotlottie-player {
+    max-width: 300px;
+  }
+
+  header,
+  .header-container {
+    padding: 8px 12px !important;
+    margin: 0 !important;
+    width: 100% !important;
+  }
+}

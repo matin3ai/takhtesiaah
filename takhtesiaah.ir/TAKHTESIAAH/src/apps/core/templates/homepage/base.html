@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  {% load static %} {% include 'homepage/components/head.html' %}
+</head>
+<body>
+<div class="container">
+   {% include 'homepage/components/header.html' %}
+    <!--<h1 class="my-books">📚 کتاب‌های ما</h1>-->
+    <div class="row-books">
+        {% for book in books %}
+        <div class="book-card">
+          <a href="{% url 'core:book_detail' book.slug %}">
+            <img src="{{ book.cover_image.url }}" class="card-img-top" alt="{{ book.title }}">
+          </a>
+          <div class="card-body">
+            <h5 class="card-title">{{ book.title }}</h5>
+            <h6 class="card-subtitle">نویسنده: {{ book.author }}</h6>
+            <p class="card-text">{{ book.description|truncatewords:20 }}</p>
+            <!--<p class="fw-bold">قیمت: ${{ book.price }}</p>-->
+            <a href="{% url 'core:book_detail' book.slug %}" class="btn-primary">اطلاعات بیشتر</a>
+          </div>
+        </div>
+        {% empty %}
+        <p class="text-center">کتابی یافت نشد.</p>
+        {% endfor %}
+</div>
+
+
+    <!--contact-->
+<div id="contact-modal" class="modal">
+    <div class="modal-content">
+      <button class="close-btn" aria-label="بستن">×</button>
+      <h3>تماس با ما</h3>
+      
+      <p><strong>📞 شماره تماس:</strong></p>
+      <p>
+        <a href="tel:09132039701" class="call-btn">۰۹۱۳۲۰۳۹۷۰۱</a>
+      </p>
+        <a href="mailto:info@takhtesiaah.ir">info@takhtesiaah.ir</a>
+    </div>
+</div>
+
+
+{% include 'homepage/components/footer.html' %} {% csrf_token %}
+  
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Book",
+    "name": "مجموعه کتاب تخته سیاه",
+    "author": "سعیده حبیب الهیان",
+    "description": "مجموعه کتاب‌های آموزشی کلاس اول دبستان",
+    "publisher": {
+      "@type": "Organization",
+      "name": "تخته سیاه"
+    }
+  }
+</script>
+<script src="{% static 'homepage/js/scripts.js' %}" defer></script>
+<link rel="stylesheet" href="{% static 'homepage/css/contact.css' %}">
+<script src="{% static 'homepage/js/contact.js' %}" defer></script>
+</body>
+</html>
