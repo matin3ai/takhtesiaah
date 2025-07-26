@@ -91,7 +91,7 @@ See the [LICENSE](./LICENSE) file for more details.
 ## 👤 Author
 
 Developed by **Matin Alijani**  
-📧 matin3ai [at] gmail [dot] com  
+📧 matin3ai@gmail.com  
 🌐 [takhtesiaah.ir](https://takhtesiaah.ir)  
 🔗 GitHub: [@matin3ai](https://github.com/matin3ai)
 
